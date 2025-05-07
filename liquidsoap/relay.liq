@@ -7,8 +7,7 @@ icecast_port = int(getenv("ICECAST_PORT", "8000"))
 icecast_password = getenv("ICECAST_PASSWORD", "hackme")
 icecast_mount = getenv("ICECAST_MOUNT", "stream.mp3")
 
-output.icecast(%mp3, host=icecast_host, port=icecast_port, password=icecast_password,
-               mount=icecast_mount, radio)
+output.icecast(%mp3, host=icecast_host, port=icecast_port, password=icecast_password, user="source", mount=icecast_mount, radio)
 
 server.socket = [ ("localhost", 1234) ]
 

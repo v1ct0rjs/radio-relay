@@ -1,10 +1,8 @@
 services:
   liquidsoap:
-    image: savonet/liquidsoap
+    image: phasecorex/liquidsoap
     volumes:
       - ./liquidsoap/relay.liq:/app/relay.liq
-    depends_on:
-      - icecast
     command: ["liquidsoap", "/app/relay.liq"]
     network_mode: "host"
     env_file:
