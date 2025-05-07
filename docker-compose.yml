@@ -1,0 +1,17 @@
+services:
+  liquidsoap:
+    image: savonet/liquidsoap
+    volumes:
+      - ./liquidsoap/relay.liq:/app/relay.liq
+    depends_on:
+      - icecast
+    command: ["liquidsoap", "/app/relay.liq"]
+    network_mode: "host"
+    env_file:
+      - .env
+
+  backend:
+    build: ./flask-backend
+    ports:
+      - "8080:8080"
+    network_mode: "host"
